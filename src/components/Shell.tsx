@@ -278,18 +278,17 @@ function SlipSheet() {
 
 export function Shell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation()
-  const onBets = pathname === '/bets'
+  // /bets brings its own Royal Emerald layout (header, sidebars, slip), so it skips the app chrome.
+  if (pathname === '/bets') return <>{children}</>
   return (
     <div className="min-h-dvh">
       <TopBar />
       <div className="mx-auto flex max-w-[1760px] gap-3 px-3">
         <LeftNav />
         <main className="min-w-0 flex-1 px-1 pb-48 pt-5 lg:px-4 lg:pb-16 lg:pt-6">{children}</main>
-        {!onBets && (
-          <aside aria-label="Bet slip and My bets" className="surface sticky top-24 mt-3 hidden h-[calc(100dvh-7rem)] w-[380px] shrink-0 self-start overflow-hidden xl:block">
-            <BetsPanel />
-          </aside>
-        )}
+        <aside aria-label="Bet slip and My bets" className="surface sticky top-24 mt-3 hidden h-[calc(100dvh-7rem)] w-[380px] shrink-0 self-start overflow-hidden xl:block">
+          <BetsPanel />
+        </aside>
       </div>
       <BottomNav />
       <SlipBar />

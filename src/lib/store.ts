@@ -231,6 +231,51 @@ export const actions = {
     )
   },
 
+  /** Places every selection on the slip as one accumulator. Returns an error message, or null on success. */
+  async placeAccumulator(rawStake: string): Promise<string | null> {
+    const legs = state.slip.map((i) => ({ item: i, found: findOutcome(i.id) }))
+    const stake = parseStake(rawStake)
+    if (legs.length < 2) return 'Add at least two selections.'
+    if (legs.some((l) => !l.found)) return 'A selection is no longer available.'
+    if (new Set(legs.map((l) => l.found!.match.id)).size !== legs.length) return 'Only one selection per match is allowed in an accumulator.'
+    if (stake < MIN_STAKE) return `Minimum stake is ${MIN_STAKE} USDT.`
+    if (stake > MAX_STAKE) return `Maximum stake is ${MAX_STAKE} USDT.`
+
+    await wait(1000)
+    if (state.failNext) {
+      set({ failNext: false })
+      return 'Bet failed. We could not reach the pricing service. Your stake was not taken.'
+    }
+    if (legs.some((l) => isSuspended(l.item.id))) return 'A selection was suspended while placing. Your stake was not taken.'
+    if (stake > state.balance) return 'Insufficient balance.'
+    let combined = 1
+    for (const l of legs) {
+      const current = priceNow(l.item.id)
+      if (hasChanged(l.item.odds, current)) return 'A price moved while placing. Review the new odds and try again.'
+      combined *= current
+    }
+
+    const bet: Bet = {
+      id: `b-${Date.now()}-acca`,
+      ref: refCode(),
+      matchName: legs.map((l) => matchName(l.found!.match)).join(' | '),
+      marketName: legs.map((l) => `${l.found!.outcome.label} (${l.found!.market.name})`).join(' · '),
+      label: `${legs.length}-fold accumulator`,
+      odds: Math.round(combined * 100) / 100,
+      stake,
+      placedAt: Date.now(),
+      status: 'open',
+    }
+    set({
+      bets: [bet, ...state.bets],
+      balance: Math.round((state.balance - stake) * 100) / 100,
+      slip: [],
+      panelTab: 'bets',
+      betsTab: 'open',
+    })
+    return null
+  },
+
   cashOut(betId: string, value: number) {
     const bet = state.bets.find((b) => b.id === betId)
     if (!bet || bet.status !== 'open') return

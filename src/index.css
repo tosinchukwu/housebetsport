@@ -11,6 +11,84 @@ html {
   color-scheme: dark;
 }
 
+
+:root {
+  --ink-950: 8 7 13;
+  --ink-900: 14 12 22;
+  --ink-850: 20 17 31;
+  --ink-800: 27 24 41;
+  --ink-700: 38 34 56;
+  --ink-600: 53 47 78;
+  --ink-500: 75 68 112;
+  --volt: 198 255 61;
+  --volt-300: 220 255 130;
+  --volt-500: 163 224 0;
+  --iris: 143 125 255;
+  --iris-400: 168 154 255;
+  --iris-500: 116 97 245;
+  --mint: 228 255 160;
+  --live: 255 69 96;
+  --gold: 255 194 71;
+  --up: 61 220 151;
+  --down: 255 107 129;
+}
+
+/* Royal Emerald: scoped to the /bets page only. */
+.royal {
+  --ink-950: 11 24 33; /* #0B1821 */
+  --ink-900: 16 31 43; /* #101F2B background */
+  --ink-850: 23 44 57; /* #172C39 secondary */
+  --ink-800: 29 57 69; /* #1D3945 cards */
+  --ink-700: 37 70 83; /* #254653 elevated */
+  --ink-600: 47 87 102;
+  --ink-500: 60 107 123;
+  --volt: 24 199 139; /* #18C78B emerald */
+  --volt-300: 91 221 176;
+  --volt-500: 18 166 115;
+  --iris: 215 181 109; /* champagne gold */
+  --iris-400: 227 201 142;
+  --iris-500: 191 154 82;
+  --mint: 24 199 139;
+  --live: 241 107 112; /* #F16B70 */
+  --gold: 215 181 109; /* #D7B56D */
+  --up: 54 217 150; /* #36D996 */
+  --down: 241 107 112;
+  color: #f4f5f0;
+  font-family: 'DM Sans', ui-sans-serif, sans-serif;
+}
+.royal .text-white,
+.royal .text-slate-100,
+.royal .text-slate-200 {
+  color: #f4f5f0;
+}
+.royal .text-slate-300,
+.royal .text-slate-400 {
+  color: #a5b6ba;
+}
+.royal .text-slate-500 {
+  color: #7f949a;
+}
+.royal input::placeholder {
+  color: rgba(165, 182, 186, 0.6);
+}
+.royal .font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-feature-settings: 'lnum', 'tnum';
+  letter-spacing: -0.01em;
+}
+.royal .surface {
+  @apply rounded-2xl border-white/[0.06] bg-ink-800 bg-none shadow-card backdrop-blur-none;
+}
+.royal .surface-inner {
+  @apply rounded-xl bg-ink-850;
+}
+.royal .chip {
+  @apply bg-ink-800 hover:bg-ink-700;
+}
+.royal .chip-active {
+  @apply border-volt bg-volt text-ink-950 hover:bg-volt-300;
+}
+
 body {
   margin: 0;
   min-height: 100dvh;

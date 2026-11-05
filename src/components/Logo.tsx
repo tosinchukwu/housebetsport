@@ -1,24 +1,32 @@
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className="inline-flex items-center gap-2.5" aria-label="Housebets">
-      <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden>
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden>
         <defs>
           <linearGradient id="hb-wave" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#dcff82" />
-            <stop offset="1" stopColor="#a3e000" />
-          </linearGradient>
-          <linearGradient id="hb-tile" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#262238" />
-            <stop offset="1" stopColor="#14111f" />
+            <stop offset="0" stopColor="#8af2fb" />
+            <stop offset="1" stopColor="#17c9db" />
           </linearGradient>
         </defs>
-        <rect x="1" y="1" width="38" height="38" rx="12" fill="url(#hb-tile)" stroke="rgba(198,255,61,0.4)" />
-        <path d="M10 10v20M30 10v20M10 20h20" fill="none" stroke="url(#hb-wave)" strokeWidth="3.4" strokeLinecap="round" />
-        <circle cx="30" cy="10" r="2.6" fill="#ff4560" />
+        <rect x="1" y="1" width="38" height="38" rx="11" fill="#062330" stroke="rgba(62,230,245,0.35)" />
+        <path
+          d="M7 27c4.500 0 5.500-5 9.500-5S22 27 26 27s5-5 7-5"
+          fill="none"
+          stroke="url(#hb-wave)"
+          strokeWidth="2.600"
+          strokeLinecap="round"
+        />
+        <path
+          d="M9 20c1.500-6.500 6-10.500 12-10.500 5.500 0 8.500 3.500 8.500 7 0 3-2.200 4.700-4.700 4.700-2.100 0-3.700-1.400-3.700-3.300 0-1.600 1.200-2.800 2.800-2.800"
+          fill="none"
+          stroke="url(#hb-wave)"
+          strokeWidth="2.600"
+          strokeLinecap="round"
+        />
       </svg>
       {!compact && (
-        <span className="font-display text-[20px] font-bold tracking-tight text-white">
-          House<span className="text-volt">bets</span>
+        <span className="font-display text-[19px] font-extrabold tracking-tight text-white">
+          <span className="text-[#3ee6f5]">H</span>ousebets
         </span>
       )}
     </span>
