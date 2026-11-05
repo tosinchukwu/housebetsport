@@ -13,6 +13,17 @@ interface Props {
   children?: ReactNode
 }
 
+function PitchLines() {
+  return (
+    <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.07]" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#fff" strokeWidth="1.5">
+      <circle cx="200" cy="100" r="46" />
+      <line x1="200" y1="0" x2="200" y2="200" />
+      <rect x="-2" y="52" width="52" height="96" />
+      <rect x="350" y="52" width="52" height="96" />
+    </svg>
+  )
+}
+
 export function Scoreboard({ match, variant = 'page', children }: Props) {
   const secs = useSeconds()
   const comp = COMP_BY_ID[match.comp]
@@ -20,19 +31,20 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
   const football = match.sport === 'football'
   const start = !live ? startLabel(match.startsInMin ?? 0, secs) : null
   const name = (id: string) => (football ? teamLabel(id) : TEAM_BY_ID[id].name)
+  const home = TEAM_BY_ID[match.home]
+  const away = TEAM_BY_ID[match.away]
 
   return (
-    <section
-      aria-label="Scoreboard"
-      className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-ink-800 via-ink-850 to-ink-900 p-4 shadow-card md:p-6"
-    >
-      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-aqua/[0.07] blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-16 h-64 w-64 rounded-full bg-live/[0.05] blur-3xl" />
+    <section aria-label="Scoreboard" className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-ink-900 p-4 shadow-float md:p-6">
+      <div aria-hidden className="pointer-events-none absolute -left-20 top-0 h-full w-2/3 opacity-30 blur-3xl" style={{ background: `radial-gradient(closest-side, ${home.c1}, transparent)` }} />
+      <div aria-hidden className="pointer-events-none absolute -right-20 top-0 h-full w-2/3 opacity-30 blur-3xl" style={{ background: `radial-gradient(closest-side, ${away.c1}, transparent)` }} />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/10 via-ink-950/50 to-ink-950/80" />
+      <PitchLines />
       <div className="relative">
-        <div className="mb-4 flex items-center justify-between">
-          <p className="label-caps flex items-center gap-2">
-            {variant === 'hero' && <span className="rounded bg-aqua/10 px-1.5 py-0.5 text-aqua">Featured</span>}
-            <span className="truncate">{comp.name}</span>
+        <div className="mb-5 flex items-center justify-between gap-3">
+          <p className="label-caps flex min-w-0 items-center gap-2">
+            {variant === 'hero' && <span className="rounded-full bg-volt px-2 py-0.5 text-[10px] font-extrabold text-ink-950">Featured</span>}
+            <span className="truncate text-slate-300">{comp.name}</span>
           </p>
           {football && <CompStar compId={comp.id} label={comp.name} />}
         </div>
@@ -43,23 +55,19 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
               <Crest teamId={match.home} size={52} />
             </div>
             <div className="hidden md:block">
-              <Crest teamId={match.home} size={72} />
+              <Crest teamId={match.home} size={76} />
             </div>
             <p className="line-clamp-2 min-h-[2.5em] text-[14px] font-bold leading-tight text-white md:text-[17px]">{name(match.home)}</p>
             {variant === 'page' && football && <TeamFollowButton teamId={match.home} />}
           </div>
 
-          <div className="flex min-w-[120px] flex-col items-center gap-2.5 pt-2 md:min-w-[200px]">
+          <div className="flex min-w-[120px] flex-col items-center gap-3 pt-1 md:min-w-[210px]">
             {live ? (
               <>
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="tabular grid h-14 w-12 place-items-center rounded-xl bg-ink-950/70 font-display text-[32px] font-extrabold text-white md:h-[72px] md:w-[60px] md:text-[42px]">
-                    {match.score[0]}
-                  </span>
-                  <span className="text-slate-500">–</span>
-                  <span className="tabular grid h-14 w-12 place-items-center rounded-xl bg-ink-950/70 font-display text-[32px] font-extrabold text-white md:h-[72px] md:w-[60px] md:text-[42px]">
-                    {match.score[1]}
-                  </span>
+                <div className="flex items-center gap-1.5 rounded-3xl border border-white/10 bg-ink-950/70 px-3 py-2 backdrop-blur md:gap-2.5 md:px-5">
+                  <span className="tabular font-display text-[40px] font-bold leading-none text-white md:text-[56px]">{match.score[0]}</span>
+                  <span className="font-display text-[24px] font-bold text-volt md:text-[32px]">:</span>
+                  <span className="tabular font-display text-[40px] font-bold leading-none text-white md:text-[56px]">{match.score[1]}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <LiveBadge />
@@ -67,8 +75,8 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
                 </div>
               </>
             ) : (
-              <div className="flex flex-col items-center gap-1 pt-3">
-                <span className="tabular font-display text-[30px] font-extrabold leading-none text-white md:text-[40px]">{start?.primary}</span>
+              <div className="flex flex-col items-center gap-1 rounded-3xl border border-white/10 bg-ink-950/70 px-5 py-3 backdrop-blur">
+                <span className="tabular font-display text-[28px] font-bold leading-none text-volt md:text-[38px]">{start?.primary}</span>
                 <span className="text-[13px] font-semibold text-slate-400">{start?.secondary}</span>
               </div>
             )}
@@ -79,13 +87,13 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
               <Crest teamId={match.away} size={52} />
             </div>
             <div className="hidden md:block">
-              <Crest teamId={match.away} size={72} />
+              <Crest teamId={match.away} size={76} />
             </div>
             <p className="line-clamp-2 min-h-[2.5em] text-[14px] font-bold leading-tight text-white md:text-[17px]">{name(match.away)}</p>
             {variant === 'page' && football && <TeamFollowButton teamId={match.away} />}
           </div>
         </div>
-        {children && <div className="mt-5">{children}</div>}
+        {children && <div className="mt-6">{children}</div>}
       </div>
     </section>
   )

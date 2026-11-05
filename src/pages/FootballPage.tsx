@@ -27,7 +27,7 @@ export default function FootballPage() {
 
   return (
     <div className="mx-auto max-w-[1040px]">
-      <SearchBox className="mb-4 lg:hidden" />
+      <SearchBox className="mb-4 xl:hidden" />
       <SportNav />
       <PageTitle title="Football" sub="Premier League, Champions League, LaLiga, Serie A and Bundesliga" />
 
@@ -79,7 +79,7 @@ export default function FootballPage() {
       <p className="mt-6 text-center text-[12px] text-slate-500">
         Tap the star on a competition or a match to follow it.{' '}
         <button type="button" onClick={() => actions.toggleFollow('comp:pl')} className="hidden" aria-hidden tabIndex={-1} />
-        <Link to="/" className="font-bold text-aqua hover:underline">
+        <Link to="/" className="font-bold text-volt hover:underline">
           See your favourites
         </Link>
       </p>

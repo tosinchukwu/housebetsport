@@ -35,7 +35,7 @@ export default function LivePage() {
 
   return (
     <div className="mx-auto max-w-[1040px]">
-      <SearchBox className="mb-4 lg:hidden" />
+      <SearchBox className="mb-4 xl:hidden" />
       <SportNav />
       <PageTitle
         title={sportName ? `Live ${sportName}` : 'Live now'}
@@ -85,7 +85,7 @@ export default function LivePage() {
         </div>
       ) : (
         <div className="surface mb-8 grid place-items-center px-6 py-12 text-center">
-          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-900 text-aqua">
+          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-900 text-volt">
             <CalendarClock size={24} />
           </div>
           <h2 className="font-display text-[18px] font-bold text-white">Nothing live{sportName ? ` in ${sportName}` : ''} right now</h2>
@@ -106,7 +106,7 @@ export default function LivePage() {
 
       {shown.length > 0 && (
         <p className="mt-6 text-center text-[12px] text-slate-500">
-          Looking for pre-match? <Link to="/football" className="font-bold text-aqua hover:underline">Browse football</Link>
+          Looking for pre-match? <Link to="/football" className="font-bold text-volt hover:underline">Browse football</Link>
         </p>
       )}
       <span className="hidden">{COMPETITIONS.length}</span>

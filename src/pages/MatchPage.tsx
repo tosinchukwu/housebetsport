@@ -36,7 +36,7 @@ function MatchPicker({ match }: { match: Match }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="flex h-12 items-center gap-2 rounded-xl border border-white/[0.08] bg-ink-850 px-4 font-display text-[15px] font-bold text-white hover:bg-ink-800"
+        className="flex h-12 items-center gap-2 rounded-full border border-volt/30 bg-volt/[0.08] px-5 font-display text-[15px] font-bold text-white hover:bg-volt/15"
       >
         {tag(match)}
         <ChevronDown size={16} className={'text-slate-400 transition-transform ' + (open ? 'rotate-180' : '')} />
@@ -51,7 +51,7 @@ function MatchPicker({ match }: { match: Match }) {
                   setOpen(false)
                   navigate(`/match/${m.id}`)
                 }}
-                className={'flex h-11 w-full items-center gap-2 rounded-lg px-2.5 text-left text-[13px] font-semibold hover:bg-white/5 ' + (m.id === match.id ? 'text-aqua' : 'text-slate-200')}
+                className={'flex h-11 w-full items-center gap-2 rounded-lg px-2.5 text-left text-[13px] font-semibold hover:bg-white/5 ' + (m.id === match.id ? 'text-volt' : 'text-slate-200')}
               >
                 <span className="min-w-0 flex-1 truncate">
                   {teamLabel(m.home)} v {teamLabel(m.away)}
@@ -90,12 +90,12 @@ export default function MatchPage({ matchId }: { matchId: string }) {
     return (
       <div className="mx-auto max-w-[760px]">
         <div className="surface grid place-items-center px-6 py-14 text-center">
-          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-900 text-aqua">
+          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-900 text-volt">
             <SearchX size={24} />
           </div>
           <h1 className="font-display text-[20px] font-bold text-white">Match not found</h1>
           <p className="mt-1.5 max-w-sm text-[13px] text-slate-400">This fixture is no longer listed. Pick another from the live or football pages.</p>
-          <Link to="/football" className="mt-5 inline-flex h-11 items-center rounded-xl bg-aqua px-5 text-[14px] font-bold text-ink-950">
+          <Link to="/football" className="mt-5 inline-flex h-11 items-center rounded-xl bg-volt px-5 text-[14px] font-bold text-ink-950">
             Browse football
           </Link>
         </div>
@@ -108,14 +108,14 @@ export default function MatchPage({ matchId }: { matchId: string }) {
     : markets.filter((m) => m.group === active)
 
   return (
-    <div className="mx-auto max-w-[760px]">
+    <div className="mx-auto max-w-[820px]">
       <SportNav />
       <div className="mb-4 flex items-center gap-2">
         <button
           type="button"
           aria-label="Go back"
           onClick={() => (window.history.length > 1 ? window.history.back() : navigate('/football'))}
-          className="grid h-12 w-12 place-items-center rounded-xl border border-white/[0.08] bg-ink-850 text-slate-200 hover:bg-ink-800"
+          className="grid h-12 w-12 place-items-center rounded-full border border-white/[0.08] bg-ink-800 text-slate-200 hover:bg-ink-700"
         >
           <ArrowLeft size={18} />
         </button>
@@ -132,7 +132,7 @@ export default function MatchPage({ matchId }: { matchId: string }) {
           onChange={(e) => setParam('q', e.target.value || null)}
           placeholder="Search markets or players"
           aria-label="Search markets or players"
-          className="h-12 w-full rounded-xl border border-white/[0.08] bg-ink-850 pl-11 pr-11 text-[14px] text-white outline-none focus:border-aqua/50 focus:ring-2 focus:ring-aqua/20 [&::-webkit-search-cancel-button]:hidden"
+          className="h-12 w-full rounded-full border border-white/[0.08] bg-ink-800/80 pl-11 pr-11 text-[14px] text-white outline-none focus:border-volt/50 focus:ring-2 focus:ring-volt/20 [&::-webkit-search-cancel-button]:hidden"
         />
         {q && (
           <button type="button" aria-label="Clear search" onClick={() => setParam('q', null)} className="absolute right-1.5 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full text-slate-400 hover:bg-white/10">

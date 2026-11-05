@@ -37,7 +37,7 @@ export function Crest({ teamId, size = 28 }: Props) {
         textAnchor="middle"
         fontSize={round ? 10 : 9.5}
         fontWeight="800"
-        fontFamily="Sora, sans-serif"
+        fontFamily="Space Grotesk, sans-serif"
         fill={team.c2}
         letterSpacing="-0.3"
       >

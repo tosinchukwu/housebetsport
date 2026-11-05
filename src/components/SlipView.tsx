@@ -20,7 +20,7 @@ function Receipt_({ bets }: { bets: Bet[] }) {
               <li key={b.id} className="rounded-lg bg-ink-950/50 px-3 py-2 text-[12px]">
                 <div className="flex justify-between gap-2">
                   <span className="truncate font-semibold text-slate-100">
-                    {b.label} <span className="text-aqua">@ {fmtOdds(b.odds)}</span>
+                    {b.label} <span className="text-volt">@ {fmtOdds(b.odds)}</span>
                   </span>
                   <span className="tabular shrink-0 text-slate-300">{fmtAmount(b.stake)} USDT</span>
                 </div>
@@ -55,7 +55,7 @@ function SlipRow({ item }: { item: SlipItem }) {
   const ret = stake * odds
 
   return (
-    <li className={'rounded-2xl border bg-ink-900/70 p-3.5 transition-colors ' + (suspended ? 'border-gold/30' : changed ? 'border-aqua/40' : 'border-white/[0.07]')}>
+    <li className={'rounded-2xl border bg-ink-900/70 p-3.5 transition-colors ' + (suspended ? 'border-gold/30' : changed ? 'border-volt/40' : 'border-white/[0.07]')}>
       <div className="flex items-start gap-2">
         <div className="min-w-0 flex-1">
           <p className="truncate text-[11px] font-semibold uppercase tracking-wide text-slate-500">{matchName(found.match)}</p>
@@ -70,7 +70,7 @@ function SlipRow({ item }: { item: SlipItem }) {
           ) : (
             <div>
               {changed && <p className="tabular text-[11px] text-slate-500 line-through">{fmtOdds(item.odds)}</p>}
-              <p className={'tabular font-display text-[19px] font-bold leading-none ' + (changed ? (odds > item.odds ? 'text-up' : 'text-down') : 'text-aqua')}>
+              <p className={'tabular font-display text-[19px] font-bold leading-none ' + (changed ? (odds > item.odds ? 'text-up' : 'text-down') : 'text-volt')}>
                 {fmtOdds(odds)}
               </p>
             </div>
@@ -94,11 +94,11 @@ function SlipRow({ item }: { item: SlipItem }) {
         </p>
       )}
       {changed && (
-        <div className="mt-3 flex items-center gap-2 rounded-lg bg-aqua/[0.08] px-3 py-2">
-          <p className="flex-1 text-[12px] font-semibold text-aqua">
+        <div className="mt-3 flex items-center gap-2 rounded-lg bg-volt/[0.08] px-3 py-2">
+          <p className="flex-1 text-[12px] font-semibold text-volt">
             Odds changed from {fmtOdds(item.odds)} to {fmtOdds(odds)}
           </p>
-          <button type="button" onClick={() => actions.acceptOdds(item.id)} className="h-8 rounded-lg bg-aqua px-3 text-[12px] font-extrabold text-ink-950 hover:bg-aqua-300">
+          <button type="button" onClick={() => actions.acceptOdds(item.id)} className="h-8 rounded-lg bg-volt px-3 text-[12px] font-extrabold text-ink-950 hover:bg-volt-300">
             Accept
           </button>
         </div>
@@ -116,7 +116,7 @@ function SlipRow({ item }: { item: SlipItem }) {
         </label>
         <div
           className={
-            'flex h-12 items-center rounded-xl border bg-ink-950/60 pl-3.5 pr-3 transition-colors focus-within:border-aqua/60 ' +
+            'flex h-12 items-center rounded-xl border bg-ink-950/60 pl-3.5 pr-3 transition-colors focus-within:border-volt/60 ' +
             (tooHigh ? 'border-down/60' : 'border-white/[0.08]')
           }
         >
@@ -172,7 +172,7 @@ export function SlipView() {
         {slip.length === 0 ? (
           receipt.length === 0 && (
             <div className="grid place-items-center px-6 py-14 text-center">
-              <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-850 text-aqua">
+              <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-850 text-volt">
                 <Receipt size={24} />
               </div>
               <p className="font-display text-[16px] font-bold text-white">Your slip is empty</p>
@@ -249,7 +249,7 @@ function SlipFooter({ balance }: { balance: number }) {
         </div>
         <div className="flex justify-between">
           <dt className="text-slate-400">Potential return</dt>
-          <dd className="tabular font-display text-[15px] font-bold text-aqua">{fmtAmount(ret)} USDT</dd>
+          <dd className="tabular font-display text-[15px] font-bold text-volt">{fmtAmount(ret)} USDT</dd>
         </div>
         <div className="flex justify-between text-[12px]">
           <dt className="text-slate-500">Sample balance</dt>

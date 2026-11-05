@@ -33,7 +33,7 @@ export function DemoMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Prototype states"
-        className={'grid h-10 w-10 place-items-center rounded-xl border transition-colors ' + (open ? 'border-aqua/50 bg-aqua/10 text-aqua' : 'border-white/[0.08] bg-ink-850 text-slate-300 hover:bg-ink-800')}
+        className={'grid h-10 w-10 place-items-center rounded-xl border transition-colors ' + (open ? 'border-volt/50 bg-volt/10 text-volt' : 'border-white/[0.08] bg-ink-850 text-slate-300 hover:bg-ink-800')}
       >
         <FlaskConical size={18} />
       </button>
@@ -55,7 +55,7 @@ export function DemoMenu() {
                 }}
                 className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-[13px] font-semibold text-slate-100 hover:bg-white/5 disabled:opacity-40 disabled:hover:bg-transparent"
               >
-                <it.icon size={16} className="text-aqua" />
+                <it.icon size={16} className="text-volt" />
                 {it.label}
               </button>
             )

@@ -44,13 +44,13 @@ export function OddsButton({ outcomeId, label, size = 'md', forceSuspended }: Pr
   const sm = size === 'sm'
 
   const base =
-    'group relative flex min-w-0 flex-col justify-center overflow-hidden rounded-xl border text-left transition-all duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 '
+    'group relative flex min-w-0 flex-col justify-center overflow-hidden rounded-2xl border text-left transition-all duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-volt/70 '
   const pad = sm ? 'min-h-[52px] px-3 py-2' : 'min-h-[56px] px-3.5 py-2.5'
   const tone = suspended
-    ? 'cursor-not-allowed border-white/[0.04] bg-ink-900/60 text-slate-500'
+    ? 'cursor-not-allowed border-white/[0.03] bg-ink-950/60 text-slate-500'
     : selected
-      ? 'border-aqua bg-gradient-to-b from-aqua-300 to-aqua-500 text-ink-950 shadow-glow'
-      : 'border-white/[0.06] bg-ink-800/70 hover:border-aqua/40 hover:bg-ink-700/70'
+      ? 'border-volt bg-volt text-ink-950 shadow-glow'
+      : 'border-white/[0.07] bg-ink-800/80 hover:border-volt/50 hover:bg-ink-700'
 
   return (
     <button
@@ -85,7 +85,7 @@ export function OddsButton({ outcomeId, label, size = 'md', forceSuspended }: Pr
             <span
               className={
                 'tabular font-display text-[15px] font-bold leading-none ' +
-                (selected ? 'text-ink-950' : dir > 0 ? 'text-up' : dir < 0 ? 'text-down' : 'text-aqua')
+                (selected ? 'text-ink-950' : dir > 0 ? 'text-up' : dir < 0 ? 'text-down' : 'text-volt')
               }
             >
               {fmtOdds(odds)}

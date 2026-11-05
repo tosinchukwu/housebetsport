@@ -9,7 +9,7 @@ import { findOutcome } from '@/lib/markets'
 import { LiveBadge } from '@/components/MatchCards'
 
 const STATUS: Record<Bet['status'], { label: string; cls: string }> = {
-  open: { label: 'Open', cls: 'bg-aqua/10 text-aqua' },
+  open: { label: 'Open', cls: 'bg-volt/10 text-volt' },
   won: { label: 'Won', cls: 'bg-up/15 text-up' },
   lost: { label: 'Lost', cls: 'bg-down/15 text-down' },
   cashed: { label: 'Cashed out', cls: 'bg-gold/15 text-gold' },
@@ -98,7 +98,7 @@ function BetCard({ bet }: { bet: Bet }) {
           <p className="truncate text-[12px] text-slate-400">{bet.marketName}</p>
           <p className="mt-0.5 truncate text-[12px] text-slate-500">{bet.matchName}</p>
         </div>
-        <p className="tabular font-display text-[17px] font-bold text-aqua">{fmtOdds(bet.odds)}</p>
+        <p className="tabular font-display text-[17px] font-bold text-volt">{fmtOdds(bet.odds)}</p>
       </div>
       {live && found && (
         <div className="mt-3 flex items-center gap-2 rounded-lg bg-ink-950/50 px-3 py-2">
@@ -107,7 +107,7 @@ function BetCard({ bet }: { bet: Bet }) {
           <span className="tabular ml-auto font-display text-[13px] font-bold text-white">
             {found.match.score[0]} - {found.match.score[1]}
           </span>
-          <Link to={`/match/${found.match.id}`} className="text-[12px] font-bold text-aqua hover:underline">
+          <Link to={`/match/${found.match.id}`} className="text-[12px] font-bold text-volt hover:underline">
             View
           </Link>
         </div>
@@ -154,7 +154,7 @@ export function MyBets() {
       </div>
       {list.length === 0 ? (
         <div className="grid place-items-center px-6 py-14 text-center">
-          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-850 text-aqua">
+          <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.08] bg-ink-850 text-volt">
             <Ticket size={24} />
           </div>
           <p className="font-display text-[16px] font-bold text-white">No {tab} bets</p>

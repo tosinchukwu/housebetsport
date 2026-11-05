@@ -64,13 +64,13 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto max-w-[1040px]">
-      <SearchBox className="mb-4 lg:hidden" />
+      <SearchBox className="mb-4 xl:hidden" />
       <SportNav />
 
       <div className="mb-8">
         <Scoreboard match={featured} variant="hero">
           <ResultOdds match={featured} />
-          <Link to={`/match/${featured.id}`} className="mt-4 flex h-11 items-center justify-center gap-1 rounded-xl bg-white/[0.05] text-[13px] font-bold text-white hover:bg-white/10">
+          <Link to={`/match/${featured.id}`} className="mt-4 flex h-12 items-center justify-center gap-1 rounded-full bg-volt text-[14px] font-bold text-ink-950 hover:bg-volt-300">
             All {marketTotal} markets <ChevronRight size={15} />
           </Link>
         </Scoreboard>
@@ -99,7 +99,7 @@ export default function HomePage() {
 
       <section aria-label="Top competitions" className="mb-6">
         <SectionHeader title="Top competitions" />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 2xl:grid-cols-5">
           {FOOTBALL_COMPS.map((id) => {
             const c = COMP_BY_ID[id]
             const all = MATCHES.filter((m) => m.comp === id)
@@ -108,7 +108,7 @@ export default function HomePage() {
               <Link
                 key={id}
                 to={`/football?c=${id}`}
-                className="group surface relative overflow-hidden p-4 transition-all hover:-translate-y-0.5 hover:border-white/15"
+                className="group surface relative overflow-hidden p-4 transition-all hover:-translate-y-1 hover:border-volt/30"
               >
                 <span aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full blur-2xl" style={{ background: `${c.accent}33` }} />
                 <span className="relative grid h-11 w-11 place-items-center rounded-xl font-display text-[13px] font-extrabold" style={{ background: `${c.accent}22`, color: c.accent }}>

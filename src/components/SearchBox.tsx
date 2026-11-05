@@ -81,7 +81,7 @@ export function SearchBox({ className = '' }: { className?: string }) {
 
   return (
     <div ref={ref} className={'relative ' + className}>
-      <div className="flex h-12 items-center gap-2.5 rounded-xl border border-white/[0.08] bg-ink-850/80 px-3.5 transition-colors focus-within:border-aqua/50 lg:h-11">
+      <div className="flex h-12 items-center gap-2.5 rounded-full border border-white/[0.08] bg-ink-800/80 px-3.5 transition-colors focus-within:border-volt/50 lg:h-11">
         <Search size={18} className="shrink-0 text-slate-400" />
         <input
           value={q}

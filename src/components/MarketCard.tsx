@@ -12,14 +12,15 @@ export function MarketCard({ market, defaultOpen = true }: { market: Market; def
   const body = `market-${market.matchId}-${market.key}`
 
   return (
-    <section aria-label={market.name} className="surface-inner overflow-hidden">
+    <section aria-label={market.name} className="surface overflow-hidden">
       <button
         type="button"
         aria-expanded={open}
         aria-controls={body}
         onClick={() => setOpen((v) => !v)}
-        className="flex h-12 w-full items-center gap-2 px-3.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-aqua/60"
+        className="flex h-12 w-full items-center gap-2.5 px-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-volt/60"
       >
+        <span aria-hidden className="h-4 w-1 shrink-0 rounded-full bg-volt" />
         <h3 className="min-w-0 flex-1 truncate font-display text-[14px] font-bold text-white">{market.name}</h3>
         {suspended && (
           <span className="inline-flex items-center gap-1 rounded-full bg-gold/10 px-2 py-0.5 text-[11px] font-bold text-gold">
@@ -29,7 +30,7 @@ export function MarketCard({ market, defaultOpen = true }: { market: Market; def
         <ChevronDown size={18} className={'shrink-0 text-slate-400 transition-transform ' + (open ? 'rotate-180' : '')} />
       </button>
       {open && (
-        <div id={body} className={'grid gap-2 px-3 pb-3 ' + COLS[market.cols]}>
+        <div id={body} className={'grid gap-2 px-3.5 pb-3.5 ' + COLS[market.cols]}>
           {market.outcomes.map((o) => (
             <OddsButton key={o.id} outcomeId={o.id} size="sm" forceSuspended={suspended} />
           ))}
