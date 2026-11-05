@@ -35,7 +35,7 @@ function Receipt_({ bets }: { bets: Bet[] }) {
             <button type="button" onClick={() => actions.setPanelTab('bets')} className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-xl bg-white/[0.06] text-[13px] font-bold text-white hover:bg-white/10">
               View in My bets <ArrowRight size={14} />
             </button>
-            <button type="button" onClick={actions.dismissReceipt} className="h-10 rounded-xl px-4 text-[13px] font-bold text-slate-300 hover:bg-white/5">
+            <button type="button" onClick={() => actions.dismissReceipt()} className="h-10 rounded-xl px-4 text-[13px] font-bold text-slate-300 hover:bg-white/5">
               Done
             </button>
           </div>
@@ -186,7 +186,7 @@ export function SlipView() {
           <>
             <div className="flex items-center justify-between">
               <p className="label-caps">Singles · {slip.length}</p>
-              <button type="button" onClick={actions.clearSlip} className="inline-flex items-center gap-1 text-[12px] font-semibold text-slate-400 hover:text-white">
+              <button type="button" onClick={() => actions.clearSlip()} className="inline-flex items-center gap-1 text-[12px] font-semibold text-slate-400 hover:text-white">
                 <Trash2 size={13} /> Clear all
               </button>
             </div>
@@ -233,7 +233,7 @@ function SlipFooter({ balance }: { balance: number }) {
       tone: 'warn',
       onClick: () => rows.filter((r) => r.suspended).forEach((r) => actions.removeSelection(r.i.id)),
     }
-  else if (anyChanged) cta = { label: 'Accept odds changes', tone: 'warn', onClick: actions.acceptAll }
+  else if (anyChanged) cta = { label: 'Accept odds changes', tone: 'warn', onClick: () => actions.acceptAll() }
   else if (anyEmpty) cta = { label: 'Enter a stake', disabled: true }
   else if (anyHigh) cta = { label: 'Stake above maximum', disabled: true }
   else if (insufficient) cta = { label: 'Insufficient balance', disabled: true }

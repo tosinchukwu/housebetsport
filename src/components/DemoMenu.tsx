@@ -20,9 +20,9 @@ export function DemoMenu() {
   const items = [
     { icon: TrendingUp, label: 'Odds go up on my slip', run: () => actions.demoMoveOdds(1), needsSlip: true },
     { icon: TrendingDown, label: 'Odds go down on my slip', run: () => actions.demoMoveOdds(-1), needsSlip: true },
-    { icon: Lock, label: 'Suspend my slip markets', run: actions.demoSuspendSlip, needsSlip: true },
-    { icon: ZapOff, label: failNext ? 'Next bet will fail (armed)' : 'Make the next bet fail', run: actions.demoFailNext, needsSlip: false },
-    { icon: RotateCcw, label: 'Reset prototype', run: actions.demoReset, needsSlip: false },
+    { icon: Lock, label: 'Suspend my slip markets', run: () => actions.demoSuspendSlip(), needsSlip: true },
+    { icon: ZapOff, label: failNext ? 'Next bet will fail (armed)' : 'Make the next bet fail', run: () => actions.demoFailNext(), needsSlip: false },
+    { icon: RotateCcw, label: 'Reset prototype', run: () => actions.demoReset(), needsSlip: false },
   ]
 
   return (
