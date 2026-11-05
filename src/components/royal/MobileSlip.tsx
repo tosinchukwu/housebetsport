@@ -34,9 +34,6 @@ export function MobileSlip() {
     }
   }, [open])
 
-  const ids = slip.map((i) => i.id)
-  const distinct = new Set(ids.map((id) => findOutcome(id)?.match.id)).size === ids.length
-  const combined = ids.reduce((a, id) => a * (priceNow(id) || 1), 1)
   const first = slip[0] && findOutcome(slip[0].id)
 
   return (
@@ -55,7 +52,7 @@ export function MobileSlip() {
                 {slip.length === 1 && first ? `${first.outcome.label} @ ${fmtOdds(priceNow(slip[0].id))}` : `${slip.length} selections`}
               </span>
               <span className="block text-[11px] font-semibold text-ink-900/70">
-                {slip.length > 1 && distinct ? `Accumulator odds ${fmtOdds(combined)}` : 'Tap to set stakes'}
+                Singles · tap to set stakes
               </span>
             </span>
             <ChevronUp size={20} />

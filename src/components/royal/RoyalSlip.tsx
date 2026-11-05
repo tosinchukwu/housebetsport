@@ -1,15 +1,12 @@
-import { useState } from 'react'
 import { actions, useStore } from '@/lib/store'
 import { SlipView } from '@/components/SlipView'
 import { MyBets } from '@/components/MyBets'
-import { AccaView } from '@/components/royal/AccaView'
 
-/** Bet slip (singles or accumulator) and My bets, using the existing betting logic. */
+/** Bet slip (singles only) and My bets, using the existing betting logic. */
 export function RoyalSlip() {
   const tab = useStore((s) => s.panelTab)
   const slipCount = useStore((s) => s.slip.length)
   const openCount = useStore((s) => s.bets.filter((b) => b.status === 'open').length)
-  const [mode, setMode] = useState<'singles' | 'acca'>('singles')
 
   return (
     <div className="flex h-full min-h-0 flex-col">
@@ -34,33 +31,7 @@ export function RoyalSlip() {
           </button>
         ))}
       </div>
-
-      {tab === 'slip' ? (
-        <>
-          <div role="radiogroup" aria-label="Bet type" className="mx-4 mt-3 grid shrink-0 grid-cols-2 rounded-xl bg-ink-950 p-1">
-            {(
-              [
-                ['singles', 'Singles'],
-                ['acca', 'Accumulator'],
-              ] as const
-            ).map(([key, label]) => (
-              <button
-                key={key}
-                type="button"
-                role="radio"
-                aria-checked={mode === key}
-                onClick={() => setMode(key)}
-                className={'h-9 rounded-lg text-[13px] font-bold transition-colors ' + (mode === key ? 'bg-ink-700 text-white' : 'text-slate-400 hover:text-white')}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          {mode === 'singles' ? <SlipView /> : <AccaView />}
-        </>
-      ) : (
-        <MyBets />
-      )}
+      {tab === 'slip' ? <SlipView /> : <MyBets />}
     </div>
   )
 }
