@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronUp, CircleDot, Home, Radio, Ticket, X } from 'lucide-react'
-import { Link } from '@/router'
+import { Link, useLocation } from '@/router'
 import { fmtOdds } from '@/lib/format'
 import { actions, priceNow, useStore } from '@/lib/store'
 import { findOutcome } from '@/lib/markets'
@@ -17,6 +17,7 @@ const NAV = [
 
 /** Phone and tablet: bottom navigation plus a bar that expands into the full bet slip. */
 export function MobileSlip() {
+  const { pathname } = useLocation()
   const slip = useStore((s) => s.slip)
   const open = useStore((s) => s.sheetOpen)
   useTick()
@@ -62,7 +63,7 @@ export function MobileSlip() {
         )}
         <ul className="mx-auto grid h-16 max-w-lg grid-cols-4 px-2">
           {NAV.map((n) => {
-            const active = n.to === '/bets'
+            const active = n.to === '/' ? pathname === '/' : n.to === '/football' ? pathname === '/football' || pathname.startsWith('/match/') : pathname === n.to
             return (
               <li key={n.to} className="grid place-items-center">
                 <Link

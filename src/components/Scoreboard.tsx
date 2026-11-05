@@ -35,10 +35,8 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
   const away = TEAM_BY_ID[match.away]
 
   return (
-    <section aria-label="Scoreboard" className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-ink-900 p-4 shadow-float md:p-6">
-      <div aria-hidden className="pointer-events-none absolute -left-20 top-0 h-full w-2/3 opacity-30 blur-3xl" style={{ background: `radial-gradient(closest-side, ${home.c1}, transparent)` }} />
-      <div aria-hidden className="pointer-events-none absolute -right-20 top-0 h-full w-2/3 opacity-30 blur-3xl" style={{ background: `radial-gradient(closest-side, ${away.c1}, transparent)` }} />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/10 via-ink-950/50 to-ink-950/80" />
+    <section aria-label="Scoreboard" className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-ink-800 p-4 pt-5 shadow-card md:p-6 md:pt-7">
+      <div aria-hidden className="absolute inset-x-0 top-0 h-1" style={{ background: `linear-gradient(90deg, ${home.c1} 50%, ${away.c1} 50%)` }} />
       <PitchLines />
       <div className="relative">
         <div className="mb-5 flex items-center justify-between gap-3">
@@ -64,9 +62,9 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
           <div className="flex min-w-[120px] flex-col items-center gap-3 pt-1 md:min-w-[210px]">
             {live ? (
               <>
-                <div className="flex items-center gap-1.5 rounded-3xl border border-white/10 bg-ink-950/70 px-3 py-2 backdrop-blur md:gap-2.5 md:px-5">
+                <div className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-ink-950 px-3 py-2 md:gap-2.5 md:px-5">
                   <span className="tabular font-display text-[40px] font-bold leading-none text-white md:text-[56px]">{match.score[0]}</span>
-                  <span className="font-display text-[24px] font-bold text-volt md:text-[32px]">:</span>
+                  <span className="font-display text-[24px] font-bold text-gold md:text-[32px]">:</span>
                   <span className="tabular font-display text-[40px] font-bold leading-none text-white md:text-[56px]">{match.score[1]}</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -75,8 +73,8 @@ export function Scoreboard({ match, variant = 'page', children }: Props) {
                 </div>
               </>
             ) : (
-              <div className="flex flex-col items-center gap-1 rounded-3xl border border-white/10 bg-ink-950/70 px-5 py-3 backdrop-blur">
-                <span className="tabular font-display text-[28px] font-bold leading-none text-volt md:text-[38px]">{start?.primary}</span>
+              <div className="flex flex-col items-center gap-1 rounded-2xl border border-white/10 bg-ink-950 px-5 py-3">
+                <span className="tabular font-display text-[28px] font-bold leading-none text-gold md:text-[38px]">{start?.primary}</span>
                 <span className="text-[13px] font-semibold text-slate-400">{start?.secondary}</span>
               </div>
             )}

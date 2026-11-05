@@ -110,7 +110,6 @@ export default function HomePage() {
                 to={`/football?c=${id}`}
                 className="group surface relative overflow-hidden p-4 transition-all hover:-translate-y-1 hover:border-volt/30"
               >
-                <span aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full blur-2xl" style={{ background: `${c.accent}33` }} />
                 <span className="relative grid h-11 w-11 place-items-center rounded-xl font-display text-[13px] font-extrabold" style={{ background: `${c.accent}22`, color: c.accent }}>
                   {c.short}
                 </span>

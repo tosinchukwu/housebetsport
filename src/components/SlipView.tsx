@@ -10,7 +10,7 @@ const QUICK = [10, 25, 50, 100]
 
 function Receipt_({ bets }: { bets: Bet[] }) {
   return (
-    <div className="animate-floatIn rounded-2xl border border-up/30 bg-gradient-to-b from-up/10 to-transparent p-4">
+    <div className="animate-floatIn rounded-2xl border border-up/30 bg-up/10 p-4">
       <div className="flex items-start gap-3">
         <CheckCircle2 className="mt-0.5 shrink-0 text-up" size={22} />
         <div className="min-w-0 flex-1">
@@ -241,7 +241,7 @@ function SlipFooter({ balance }: { balance: number }) {
   const failed = rows.some((r) => r.i.state === 'failed')
 
   return (
-    <div className="safe-bottom border-t border-white/[0.07] bg-ink-900/95 px-4 pb-4 pt-3.5 backdrop-blur">
+    <div className="safe-bottom border-t border-white/[0.07] bg-ink-850 px-4 pb-4 pt-3.5">
       <dl className="space-y-1.5 text-[13px]">
         <div className="flex justify-between">
           <dt className="text-slate-400">Total stake</dt>

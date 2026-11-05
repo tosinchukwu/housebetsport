@@ -24,7 +24,7 @@ export function SportNav() {
     return pathname === '/live' && sport === id
   }
   return (
-    <nav aria-label="Sports" className="no-scrollbar -mx-4 mb-4 flex gap-2 overflow-x-auto px-4 xl:hidden">
+    <nav aria-label="Sports" className="no-scrollbar -mx-4 mb-4 flex gap-2 overflow-x-auto px-4 lg:hidden">
       {ITEMS.map((it) => (
         <Link
           key={it.id}

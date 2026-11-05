@@ -1,4 +1,4 @@
-import { Link } from '@/router'
+import { Link, useLocation } from '@/router'
 import { fmtAmount } from '@/lib/format'
 import { useStore } from '@/lib/store'
 import { Logo } from '@/components/Logo'
@@ -13,6 +13,7 @@ const LINKS = [
 ]
 
 export function RoyalHeader() {
+  const { pathname } = useLocation()
   const balance = useStore((s) => s.balance)
   return (
     <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-ink-900">
@@ -23,7 +24,7 @@ export function RoyalHeader() {
         </Link>
         <nav aria-label="Main" className="ml-4 hidden items-center gap-1 lg:flex">
           {LINKS.map((l) => {
-            const active = l.to === '/bets'
+            const active = l.to === '/' ? pathname === '/' : l.to === '/football' ? pathname === '/football' || pathname.startsWith('/match/') : pathname === l.to
             return (
               <Link
                 key={l.to}

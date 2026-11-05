@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"DM Sans"', 'ui-sans-serif', 'sans-serif'],
-        display: ['"Space Grotesk"', '"DM Sans"', 'ui-sans-serif', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
       },
       colors: {
         ink: {

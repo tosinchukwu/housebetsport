@@ -66,7 +66,7 @@ export function OddsButton({ outcomeId, label, size = 'md', forceSuspended }: Pr
           key={tick}
           aria-hidden
           className="pointer-events-none absolute inset-0 animate-tint"
-          style={{ ['--tint' as string]: dir > 0 ? 'rgba(52,211,153,0.22)' : 'rgba(255,107,129,0.22)' }}
+          style={{ ['--tint' as string]: dir > 0 ? 'rgba(54,217,150,0.22)' : 'rgba(241,107,112,0.22)' }}
         />
       )}
       <span className="relative flex items-center gap-1 text-[12px] font-semibold leading-tight">

@@ -25,7 +25,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         />
       </svg>
       {!compact && (
-        <span className="font-display text-[19px] font-extrabold tracking-tight text-white">
+        <span className="text-[19px] font-extrabold tracking-tight text-white" style={{ fontFamily: "Sora, Figtree, ui-sans-serif, sans-serif" }}>
           <span className="text-[#3ee6f5]">H</span>ousebets
         </span>
       )}

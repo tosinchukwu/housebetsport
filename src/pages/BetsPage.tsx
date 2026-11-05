@@ -32,9 +32,9 @@ function Heading({ title, sub, live = false }: { title: string; sub?: string; li
 /** Royal Emerald sportsbook: leagues on the left, matches in the middle, bet slip on the right. */
 export default function BetsPage() {
   const { params } = useLocation()
-  const sport = (SPORTS.find((s) => s.id === params.get('sport'))?.id ?? null) as SportId | null
+  const sport = (SPORTS.find((s) => s.id === params.get('sport'))?.id ?? null)
   const comp = params.get('c')
-  const view = (VIEWS.find((v) => v.key === params.get('view'))?.key ?? 'all') as View
+  const view = (VIEWS.find((v) => v.key === params.get('view'))?.key ?? 'all')
 
   const update = (next: { sport?: SportId | null; comp?: string | null; view?: View }) => {
     const q = new URLSearchParams()
@@ -59,7 +59,7 @@ export default function BetsPage() {
   const nothing = (!showLive || liveList.length === 0) && (!showUpcoming || upcomingList.length === 0) && !featured
 
   return (
-    <div className="royal min-h-dvh bg-ink-900">
+    <div className="min-h-dvh bg-ink-900">
       <RoyalHeader />
       <div className="mx-auto flex max-w-[1680px] gap-6 px-4 lg:px-6">
         <RoyalSidebar sport={sport} comp={comp} onSport={(s) => update({ sport: s })} onComp={(c) => update({ comp: c })} />
